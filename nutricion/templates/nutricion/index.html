@@ -1,0 +1,24 @@
+{% extends 'nutricion/base.html' %}
+
+{% block content %}
+<section class="hero">
+    <h2>Planifica tu nutrición de forma inteligente</h2>
+    <p>Genera planes personalizados según tus objetivos y preferencias</p>
+    <a href="{% url 'perfil' %}" class="btn">Comenzar</a>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <h3>Personalizado</h3>
+        <p>Planes adaptados a tu cuerpo y objetivos</p>
+    </div>
+    <div class="feature">
+        <h3>Flexible</h3>
+        <p>Respetamos tus preferencias y alergias alimentarias</p>
+    </div>
+    <div class="feature">
+        <h3>Inteligente</h3>
+        <p>Sustitución automática de alimentos no deseados</p>
+    </div>
+</section>
+{% endblock %}
