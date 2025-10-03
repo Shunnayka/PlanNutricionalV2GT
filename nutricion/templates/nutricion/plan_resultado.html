@@ -1,0 +1,48 @@
+{% extends 'nutricion/base.html' %}
+
+{% block content %}
+<div class="plan-container">
+    <h2>Tu Plan Nutricional Personalizado</h2>
+    
+    <div class="macronutrientes-resumen">
+        <h3>Objetivos Diarios</h3>
+        <div class="macros-grid">
+            <div class="macro-item">
+                <h4>Calorías</h4>
+                <span class="valor">{{ macronutrientes.calorias }}</span>
+            </div>
+            <div class="macro-item">
+                <h4>Proteínas</h4>
+                <span class="valor">{{ macronutrientes.proteinas }}g</span>
+            </div>
+            <div class="macro-item">
+                <h4>Carbohidratos</h4>
+                <span class="valor">{{ macronutrientes.carbohidratos }}g</span>
+            </div>
+            <div class="macro-item">
+                <h4>Grasas</h4>
+                <span class="valor">{{ macronutrientes.grasas }}g</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="plan-diario">
+        <h3>Plan del Día</h3>
+        {% for tipo_comida in plan %}
+            <div class="comida-item">
+                <h4>{{ tipo_comida.tipo_comida|title }}</h4>
+                <div class="alimento-info">
+                    <strong>{{ tipo_comida.alimento.nombre }}</strong>
+                    <span>{{ tipo_comida.cantidad }}g</span>
+                </div>
+                <div class="nutrientes">
+                    <span>{{ tipo_comida.calorias_totales|floatformat:0 }} cal</span>
+                    <span>P: {{ tipo_comida.proteinas_totales|floatformat:1 }}g</span>
+                    <span>C: {{ tipo_comida.carbohidratos_totales|floatformat:1 }}g</span>
+                    <span>G: {{ tipo_comida.grasas_totales|floatformat:1 }}g</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

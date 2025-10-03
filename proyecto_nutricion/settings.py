@@ -118,8 +118,22 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "nutricion/static",
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de autenticación
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'perfil'
+LOGOUT_REDIRECT_URL = 'index'
+
+# Configuración de sesión
+SESSION_COOKIE_AGE = 1209600  # 2 semanas en segundos
+
+# Para desarrollo - servir archivos estáticos
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("text/css", ".css", True)

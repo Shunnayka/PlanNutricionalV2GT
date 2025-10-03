@@ -1,0 +1,31 @@
+{% extends 'nutricion/base.html' %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Crear Cuenta</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                
+                {% if field.help_text %}
+                    <small class="helptext">{{ field.help_text }}</small>
+                {% endif %}
+                
+                {% for error in field.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="btn">Registrarse</button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 1.5rem;">
+        ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a>
+    </p>
+</div>
+{% endblock %}
